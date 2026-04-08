@@ -1,0 +1,29 @@
+# pyproject.toml
+#
+# This is the standard Python project configuration file.
+# We use "uv" as the package manager — it's significantly faster than pip
+# and handles virtual environments automatically.
+#
+# QUICK START:
+#   Install uv:          curl -LsSf https://astral.sh/uv/install.sh | sh
+#   Create venv + deps:  uv sync
+#   Run the app:         uv run python main.py
+#   Or with uvicorn:     uv run uvicorn main:app --reload
+
+[project]
+name = "call-classifier-backend"
+version = "1.0.0"
+description = "FastAPI backend for classifying call transcripts using a local LLM (Ollama)"
+requires-python = ">=3.11"
+
+dependencies = [
+    # FastAPI — the web framework that powers our API
+    "fastapi==0.104.1",
+    # Uvicorn — the ASGI server that actually runs FastAPI
+    # [standard] pulls in extra performance dependencies (e.g. httptools, uvloop)
+    "uvicorn[standard]==0.24.0",
+    # Pydantic — data validation library used by FastAPI for request/response models
+    "pydantic==2.5.0",
+    # HTTPX — modern async-capable HTTP client used to call the Ollama API
+    "httpx==0.26.0",
+]
